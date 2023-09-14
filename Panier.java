@@ -4,12 +4,12 @@ import java.util.*;
  * @author roudet
  */
 public class Panier {
-    private ArrayList<Fruit> fruits;  //attribut pour stocker les fruits
-    private int contenanceMax;        //nb maximum d'oranges que peut contenir le panier
+    private ArrayList<Fruit> fruits  = new ArrayList<Fruit>();  //attribut pour stocker les fruits
+    private int contenanceMax=10;        //nb maximum d'oranges que peut contenir le panier
 	
     //groupe 1
     public Panier(int contenanceMax){  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-	
+       this.contenanceMax = contenanceMax;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Panier {
     }
     
     public int getContenanceMax(){  //accesseur du second attribut
-	return 0;
+	return contenanceMax;
     }
 
     //groupe 3
@@ -53,13 +53,17 @@ public class Panier {
 
     //groupe 4
     public void ajout(Fruit o) throws PanierPleinException{  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-       int x=0;
+        if (fruits.size() < contenanceMax) {
+        fruits.add(o);
+       }
+       else
+        throw new PanierPleinException();
     }
 
     //groupe 5
     public void retrait() throws PanierVideException{ //retire le dernier fruit du panier si celui-ci n'est pas vide
         if(fruits != null){
-            fruits.remove(fruits.length-1);
+            fruits.remove(fruits.size()-1);
         } else{
             System.out.println("le panier est vide");
         } 
@@ -82,9 +86,37 @@ public class Panier {
     }
     
     //tests
-    public static void main (String[] args){
-    	//Ecrire ici vos tests
-	System.out.println("premier test Panier");
+    public static void main (String[] args) throws Exception {
+        try
+            {
+                //Ecrire ici vos tests
+	            System.out.println("premier test Panier");
+                Panier p = new Panier(10);
+                Fruit c = new Ananas(40,"south-africa");
+                Fruit c1 = new Ananas(30,"colombia");
+                p.ajout(c);
+                p.ajout(c1);
+                
+                for(Fruit f : p.fruits)
+                {
+                    System.out.println(f + " \n");
+                } 
 
-    }
+                p.retrait();
+
+                System.out.println("test fonction retrait() ---------  groupe 5 --------\n");
+
+                for(Fruit f : p.fruits)
+                {
+                    System.out.println(f + " \n");
+                } 
+                
+            }   
+            catch (Exception e)
+            {
+                e.printStackTrace ();
+            }
 }
+}
+
+
