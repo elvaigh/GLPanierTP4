@@ -64,9 +64,7 @@ public class Ananas implements Fruit{
         //Ecrire ici vos tests
 	System.out.println("premier test Ananas");
     Ananas or = new Ananas(15,"algerie");
-    Ananas or1 = new Ananas(20,"germany");
     System.out.println(or);
-    boolean b = or.equals(or1);
-    System.out.println(b);
    }
 }
+
