@@ -87,11 +87,9 @@ public class Panier {
     }
     
     //tests
-    public static void main (String[] args) throws Exception {
-        try
-            {
-                //Ecrire ici vos tests
-                    System.out.println("premier test Panier");
+    public static void main (String[] args){
+    	//Ecrire ici vos tests
+        System.out.println("premier test Panier");
 
         /////// DEBUT TEST GROUPE 4 /////// 
         System.out.println("TEST GROUPE 4 : AJOUT FRUIT");
@@ -104,10 +102,7 @@ public class Panier {
             System.out.println("Panier avec ajout kiwi : " + panierTestG4.toString());
             //panierTestG4.ajout(kiwi2);
             //System.out.println("Panier rempli avec deuxième ajout kiwi : " + panierTestG4.toString());
-        }
-        catch (PanierPleinException e) {
-            e.printStackTrace();
-        }
+        
         //////// FIN TEST GROUPE 4 /////// 
                 Panier p = new Panier(10);
                 Fruit c = new Ananas(40,"south-africa");
