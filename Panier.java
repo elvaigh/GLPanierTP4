@@ -9,7 +9,7 @@ public class Panier {
 	
     //groupe 1
     public Panier(int contenanceMax){  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-	
+        
     }
 
     @Override
@@ -53,9 +53,11 @@ public class Panier {
 
     //groupe 4
     public void ajout(Fruit o) throws PanierPleinException{  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-       if (fruits.size() < contenanceMax) {
+        if (fruits.size() < contenanceMax) {
         fruits.add(o);
        }
+       else
+        throw new PanierPleinException();
     }
 
     //groupe 5
@@ -82,6 +84,23 @@ public class Panier {
     //tests
     public static void main (String[] args){
     	//Ecrire ici vos tests
-	System.out.println("premier test Panier");
+        System.out.println("premier test Panier");
+
+        /////// DEBUT TEST GROUPE 4 /////// 
+        System.out.println("TEST GROUPE 4 : AJOUT FRUIT");
+        Panier panierTestG4 = new Panier(1);
+        Kiwi kiwi1 = new Kiwi();
+        Kiwi kiwi2 = new Kiwi();
+        try {
+            System.out.println("Panier de base : " + panierTestG4.toString());
+            panierTestG4.ajout(kiwi1);
+            System.out.println("Panier avec ajout kiwi : " + panierTestG4.toString());
+            //panierTestG4.ajout(kiwi2);
+            //System.out.println("Panier rempli avec deuxième ajout kiwi : " + panierTestG4.toString());
+        }
+        catch (PanierPleinException e) {
+            e.printStackTrace();
+        }
+        //////// FIN TEST GROUPE 4 /////// 
     }
 }
